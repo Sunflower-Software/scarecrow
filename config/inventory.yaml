@@ -1,0 +1,6 @@
+all:
+  hosts:
+    galactica: 
+      ansible_host: galactica
+      ansible_user: tristan
+      ansible_sudo_pass: tristan

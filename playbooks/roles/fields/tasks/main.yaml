@@ -1,0 +1,32 @@
+---
+# Install docker using apt repository
+# https://docs.docker.com/engine/install/ubuntu/
+
+- name: Install docker dependencies
+  become: true
+  apt:
+    name:
+      - docker
+      - docker-compose
+      # - docker-ce
+      # - docker-ce-cli
+      - containerd.io
+    state: present
+
+- name: Create fields directory
+  file:
+    path: '/home/{{ ansible_user }}/fields'
+    state: directory
+
+- name: Create the docker compose file template
+  template:
+    src: docker-compose.yaml.j2
+    dest: '/home/{{ ansible_user }}/fields/docker-compose.yaml'
+
+- name: Run docker compose
+  become: true
+  docker_compose:
+    project_src: /home/{{ ansible_user }}/fields
+    state: present
+    project_name: fields
+    build: no
