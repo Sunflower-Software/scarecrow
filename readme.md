@@ -7,5 +7,3 @@ A simple ansible playbook controller for deploying and managing applications for
 
 ## Deployment Playbooks
 ### Fields
-Required Input:
-- fields_dir: The directory where the fields project is located.

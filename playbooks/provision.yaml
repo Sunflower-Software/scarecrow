@@ -1,0 +1,6 @@
+---
+- name: Provision
+  hosts: galactica
+  gather_facts: yes
+  roles:
+    - fields
